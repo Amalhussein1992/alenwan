@@ -1,0 +1,154 @@
+==========================================
+FINAL FIX - ENABLE DATABASE DRIVERS
+==========================================
+
+Your PHP has NO database drivers enabled (no SQLite, no MySQL).
+
+You need to enable them in php.ini file.
+
+==========================================
+STEP-BY-STEP FIX (5 minutes)
+==========================================
+
+STEP 1: Open Notepad as Administrator
+--------------------------------------
+1. Press Windows key
+2. Type: notepad
+3. RIGHT-CLICK on "Notepad"
+4. Click "Run as administrator"
+5. Click "Yes" when asked
+
+STEP 2: Open php.ini
+---------------------
+1. In Notepad: File → Open
+2. Go to: C:\Program Files\Php\
+3. Change filter to "All Files (*.*)" at bottom
+4. Click on: php.ini
+5. Click "Open"
+
+STEP 3: Find and Enable These Extensions
+-----------------------------------------
+Press Ctrl+F and search for each line below.
+Remove the semicolon (;) at the start of EACH line:
+
+SEARCH FOR:                  CHANGE TO:
+;extension=pdo_mysql    →    extension=pdo_mysql
+;extension=mysqli       →    extension=mysqli
+;extension=pdo_sqlite   →    extension=pdo_sqlite
+;extension=sqlite3      →    extension=sqlite3
+
+IMPORTANT: Remove the semicolon (;) from the START of each line!
+
+BEFORE:
+;extension=pdo_mysql
+;extension=mysqli
+;extension=pdo_sqlite
+;extension=sqlite3
+
+AFTER:
+extension=pdo_mysql
+extension=mysqli
+extension=pdo_sqlite
+extension=sqlite3
+
+STEP 4: Save the File
+---------------------
+1. Press Ctrl+S
+2. Close Notepad
+
+STEP 5: Restart Everything
+---------------------------
+Option A - If using XAMPP:
+1. Open XAMPP Control Panel
+2. Click "Stop" next to Apache
+3. Click "Stop" next to MySQL
+4. Wait 3 seconds
+5. Click "Start" next to MySQL
+6. Click "Start" next to Apache
+
+Option B - If using php artisan serve:
+1. Press Ctrl+C to stop the server
+2. Wait 2 seconds
+3. Run: php artisan serve
+
+STEP 6: Verify Extensions
+--------------------------
+Open Command Prompt and run:
+
+php -r "print_r(PDO::getAvailableDrivers());"
+
+You should see:
+Array
+(
+    [0] => mysql
+    [1] => sqlite
+)
+
+STEP 7: Run Migrations
+----------------------
+cd C:\Users\HP\Desktop\flutter\alenwan-backend
+php artisan migrate
+
+You should see:
+✓ Tables being created
+✓ No errors!
+
+==========================================
+VERIFICATION CHECKLIST
+==========================================
+
+✓ Opened Notepad as ADMINISTRATOR
+✓ Edited php.ini at: C:\Program Files\Php\php.ini
+✓ Removed semicolons from 4 extension lines
+✓ Saved the file
+✓ Restarted Apache/MySQL
+✓ Verified drivers are loaded
+✓ Migrations ran successfully
+
+==========================================
+STILL NOT WORKING?
+==========================================
+
+Common mistakes:
+1. Did NOT open Notepad as Administrator
+2. Edited wrong php.ini file
+3. Did not remove the semicolon properly
+4. Did not restart Apache/MySQL
+5. Looking at wrong line (there might be duplicates)
+
+Check which php.ini is being used:
+php --ini
+
+Make sure it says:
+Loaded Configuration File: C:\Program Files\Php\php.ini
+
+==========================================
+ALTERNATIVE SOLUTION
+==========================================
+
+If you absolutely cannot edit php.ini:
+
+1. Copy php.ini to your project:
+   copy "C:\Program Files\Php\php.ini" "C:\Users\HP\Desktop\flutter\alenwan-backend\php.ini"
+
+2. Edit the copy (no admin needed)
+
+3. Use it:
+   php -c php.ini artisan migrate
+
+==========================================
+WHAT HAPPENS AFTER FIX?
+==========================================
+
+✅ Database tables will be created
+✅ All forms will save to database:
+   - Movies → movies table
+   - Users → users table
+   - Categories → categories table
+   - And all other forms!
+
+✅ You can view data:
+   php artisan tinker
+   >>> App\Models\Movie::all();
+
+==========================================

@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(robocopy:*)",
+      "Bash(cmd /c \"xcopy c:\\Users\\HP\\Desktop\\flutter\\alenwan-backend C:\\xampp\\htdocs\\alenwan-backend\\ /E /I /H /Y\")",
+      "Bash(dir:*)",
+      "Bash(find:*)",
+      "Read(//c/**)",
+      "Bash(powershell:*)",
+      "Bash(php artisan migrate:*)",
+      "Bash(php artisan make:controller:*)",
+      "Bash(php artisan make:model:*)",
+      "Bash(php:*)",
+      "Bash(findstr:*)",
+      "Bash(mysql:*)",
+      "Bash(C:xamppphpphp.exe artisan migrate)",
+      "Bash(del \"C:\\Users\\HP\\Desktop\\flutter\\alenwan-backend\\database\\migrations\\2024_01_01_000001_create_advanced_users_tables.php\")",
+      "Bash(del:*)",
+      "Bash(cmd /c:*)",
+      "Bash(copy:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

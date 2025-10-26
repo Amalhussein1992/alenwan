@@ -1,0 +1,10 @@
+@extends('admin.layouts.app')
+
+@section('title', 'Podcasts Management')
+
+@section('content')
+<div class="container-fluid p-0">
+    <h1>Podcasts - Edit</h1>
+    <p>View needs to be created. Copy from movies views and modify.</p>
+</div>
+@endsection

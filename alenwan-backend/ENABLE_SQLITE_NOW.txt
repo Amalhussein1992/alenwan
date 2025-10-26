@@ -1,0 +1,116 @@
+==========================================
+FIX SQLITE ERROR - FOLLOW THESE STEPS
+==========================================
+
+The error "could not find driver" means SQLite is disabled in PHP.
+
+QUICK FIX (2 minutes):
+==========================================
+
+STEP 1: Open Notepad as Administrator
+--------------------------------------
+1. Press Windows key
+2. Type "notepad"
+3. Right-click on "Notepad"
+4. Click "Run as administrator"
+5. Click "Yes" when prompted
+
+STEP 2: Open php.ini file
+--------------------------
+1. In Notepad, click File → Open
+2. Navigate to: C:\Program Files\Php\
+3. Change file filter from "Text Documents (*.txt)" to "All Files (*.*)"
+4. Select "php.ini"
+5. Click "Open"
+
+STEP 3: Enable SQLite (Make 2 Changes)
+---------------------------------------
+1. Press Ctrl+F to open Find dialog
+2. Search for: ;extension=pdo_sqlite
+3. Remove the semicolon so it becomes: extension=pdo_sqlite
+4. Search again for: ;extension=sqlite3
+5. Remove the semicolon so it becomes: extension=sqlite3
+
+BEFORE:
+;extension=pdo_sqlite
+;extension=sqlite3
+
+AFTER:
+extension=pdo_sqlite
+extension=sqlite3
+
+STEP 4: Save the file
+---------------------
+1. Press Ctrl+S to save
+2. Close Notepad
+
+STEP 5: Restart Apache (if using XAMPP)
+----------------------------------------
+1. Open XAMPP Control Panel
+2. Click "Stop" next to Apache
+3. Wait 2 seconds
+4. Click "Start" next to Apache
+
+STEP 6: Run migrations
+----------------------
+1. Open Command Prompt in your project folder:
+   cd C:\Users\HP\Desktop\flutter\alenwan-backend
+
+2. Run:
+   php artisan migrate
+
+3. You should see tables being created!
+
+==========================================
+VERIFICATION
+==========================================
+
+Test if SQLite is enabled:
+
+php -r "echo class_exists('PDO') && in_array('sqlite', PDO::getAvailableDrivers()) ? 'SUCCESS: SQLite is enabled!' : 'FAILED: SQLite not found';"
+
+Should show: "SUCCESS: SQLite is enabled!"
+
+==========================================
+ALTERNATIVE: Use MySQL Instead
+==========================================
+
+If you can't edit php.ini, use MySQL:
+
+1. Edit .env file in: C:\Users\HP\Desktop\flutter\alenwan-backend\.env
+
+2. Change these lines:
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=alenwan
+   DB_USERNAME=root
+   DB_PASSWORD=
+
+3. Open phpMyAdmin: http://localhost/phpmyadmin
+
+4. Create database named: alenwan
+
+5. Run: php artisan migrate
+
+==========================================
+WHAT HAPPENS AFTER FIX?
+==========================================
+
+✅ All forms will save data to database
+✅ Movies, Users, Categories, etc. will be stored
+✅ You can view saved data using:
+   php artisan tinker
+   >>> App\Models\Movie::all();
+
+==========================================
+NEED HELP?
+==========================================
+
+If still having issues, the problem is likely:
+1. Not running Notepad as Administrator
+2. Editing wrong php.ini file
+3. Not restarting Apache after changes
+
+Check which php.ini is being used:
+php --ini
