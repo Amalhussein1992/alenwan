@@ -139,6 +139,7 @@ class MovieResource extends Resource
                                     ->minValue(0)
                                     ->maxValue(10)
                                     ->step(0.1)
+                                    ->default(0)
                                     ->suffix('/ 10'),
 
                                 Forms\Components\TextInput::make('imdb_id')
