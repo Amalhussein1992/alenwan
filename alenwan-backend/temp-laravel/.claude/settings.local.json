@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/HP/Desktop/flutter/alenwan-backend/**)",
+      "Bash(php artisan migrate:status:*)",
+      "Bash(php artisan tinker:*)",
+      "Bash(php artisan:*)",
+      "Bash(composer require:*)",
+      "Bash(php create_admin.php:*)",
+      "Bash(mkdir:*)",
+      "Read(//c/Users/HP/Desktop/flutter/**)",
+      "Bash(php add_demo_content.php:*)",
+      "Bash(php:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

@@ -1,0 +1,52 @@
+/* RTL Support for Arabic Language */
+[dir="rtl"] .filament-main {
+    direction: rtl;
+}
+
+[dir="rtl"] .fi-sidebar {
+    left: auto;
+    right: 0;
+}
+
+[dir="rtl"] .fi-sidebar-nav {
+    text-align: right;
+}
+
+[dir="rtl"] .fi-topbar {
+    direction: rtl;
+}
+
+[dir="rtl"] .fi-breadcrumbs {
+    direction: rtl;
+}
+
+[dir="rtl"] .fi-ta-table {
+    direction: rtl;
+}
+
+[dir="rtl"] .fi-fo-field-wrp {
+    direction: rtl;
+}
+
+/* Fix for form fields */
+[dir="rtl"] input,
+[dir="rtl"] textarea,
+[dir="rtl"] select {
+    text-align: right;
+}
+
+/* Fix for icons */
+[dir="rtl"] .fi-sidebar-item-icon {
+    margin-right: 0;
+    margin-left: 0.75rem;
+}
+
+/* Fix for dropdown menus */
+[dir="rtl"] .fi-dropdown-list {
+    text-align: right;
+}
+
+/* Fix for notifications */
+[dir="rtl"] .fi-no {
+    direction: rtl;
+}

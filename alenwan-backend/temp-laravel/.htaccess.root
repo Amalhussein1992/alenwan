@@ -1,0 +1,17 @@
+<IfModule mod_rewrite.c>
+    # Redirect all requests to public folder
+    RewriteEngine On
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
+
+# Disable directory browsing
+Options -Indexes
+
+# Prevent access to sensitive files
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+<FilesMatch "(composer\.json|composer\.lock|package\.json|\.env)$">
+    Require all denied
+</FilesMatch>
